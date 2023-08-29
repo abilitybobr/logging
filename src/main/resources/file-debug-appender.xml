@@ -1,0 +1,21 @@
+<included>
+    <appender name="FILE-DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./log/debug/debug-${BY_DATE}.log</file>
+        <filter class = "ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern> ./backup/debug/debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+<!--            <maxFileSize>100MB</maxFileSize>-->
+            <maxFileSize>1MB</maxFileSize>
+            <!-- 로그 보관 기간은 30일 -->
+            <maxHistory>1</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+</included>
